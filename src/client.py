@@ -30,6 +30,9 @@ def main():
     try:
         server.connect()
         logger.info('Connected to server at %s', server._RPCClient__address)
+
+        status = Status(json.loads(server.status(), object_hook=lambda d: namedtuple('X', d.keys())(*d.values())))
+        logger.info('Request result: ({}, {}, {}, {}, {}, {}, {}, {})'.format(status.datetime, status.direction, status.speed, status.looking, status.distance, status.position, status.color, status.angle))
         
         logger.info('Request result: {}'.format(server.drive_forward()))
         sleep(2)

@@ -10,5 +10,6 @@ class Status:
         self.speed = x.speed
         self.looking = x.looking
         self.distance = x.distance
+        self.position = x.position
         self.color = x.color
         self.angle = x.angle
